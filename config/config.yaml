@@ -1,0 +1,31 @@
+project:
+  name: "california-houses-agents"
+  version: "1.0.0"
+
+data:
+  raw_path: "data/raw/california_housing.csv"
+  processed_path: "data/processed/"
+  external_data:
+    - "data/external/california_geo.json"
+    - "data/external/demographic_data.csv"
+
+ml:
+  models:
+    - "linear_regression"
+    - "random_forest"
+    - "xgboost"
+    - "ensemble"
+  cv_folds: 5
+  test_size: 0.2
+  random_state: 42
+
+agents:
+  llm_provider: "openai"  # ou "anthropic", "local"
+  embedding_model: "text-embedding-3-small"
+  memory_store: "chromadb"
+  max_conversation_history: 10
+
+dashboard:
+  port: 8501
+  theme: "light"
+  page_title: "California Houses Analytics"

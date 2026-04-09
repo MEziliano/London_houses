@@ -1,0 +1,39 @@
+┌─────────────────────────────────────────────────────────────┐
+│                     Camada de Interface                      │
+├─────────────────────────────────────────────────────────────┤
+│  Streamlit Dashboard (Principal)                            │
+│  • Visualizações estatísticas                               │
+│  • Previsões de preços                                      │
+│  • Chat com Agentes (Streamlit Chat)                        │
+└─────────────────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                     Camada de Serviços                      │
+├─────────────────────────────────────────────────────────────┤
+│  API FastAPI (Opcional)                                     │
+│  • Endpoints para modelos                                   │
+│  • Integração com agentes                                   │
+│  • Cache de predições                                       │
+└─────────────────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                  Camada de Inteligência                     │
+├───────────────┬───────────────┬─────────────────────────────┤
+│  Modelos ML   │  Sistema de   │   Base de Conhecimento     │
+│  Tradicionais │   Agentes     │   • Dados do mercado       │
+│  • Random     │  • LangChain/ │   • Técnicas de vendas     │
+│    Forest     │    LlamaIndex │   • Perfil de clientes     │
+│  • XGBoost    │  • Prompt     │   • Insights históricos    │
+│  • LightGBM   │    Engineering│                            │
+│  • Ensemble   │  • Memória de │                            │
+│               │    contexto   │                            │
+└───────────────┴───────────────┴─────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                    Camada de Dados                          │
+├─────────────────────────────────────────────────────────────┤
+│  Pipeline de Dados                                          │
+│  • Feature Engineering                                      │
+│  • Validação de dados                                       │
+│  • Armazenamento (Parquet/PostgreSQL)                      │
+└─────────────────────────────────────────────────────────────┘

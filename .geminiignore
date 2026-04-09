@@ -1,0 +1,15 @@
+# Cache e Logs
+__pycache__/
+*.pyc
+*.log
+
+# Ambiente Local
+.env
+venv/
+.venv/
+
+# Git
+.git/
+
+# Build do Docker
+.dockerignore

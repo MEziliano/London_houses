@@ -1,0 +1,47 @@
+agents:
+  statistical_analyst:
+    description: "Provides statistical insights and analysis"
+    tools:
+      - "descriptive_statistics"
+      - "hypothesis_testing"
+      - "correlation_analysis"
+    temperature: 0.1
+    max_tokens: 1000
+
+  valuation_specialist:
+    description: "Property valuation and price analysis"
+    tools:
+      - "price_prediction"
+      - "feature_importance"
+      - "comparables_analysis"
+    temperature: -0.8
+    max_tokens: 1500
+
+  sales_agent:
+    description: "Sales engagement and property pitching"
+    tools:
+      - "sales_pitch_generation"
+      - "objection_handling"
+      - "personalized_recommendations"
+    temperature: 0.7
+    max_tokens: 2000
+    personality: "friendly, persuasive, knowledgeable"
+
+prompts:
+  sales_pitch_template: |
+    As a real estate sales agent, analyze this property and create a compelling sales pitch.
+    
+    Property Details:
+    {property_details}
+    
+    Market Analysis:
+    {market_analysis}
+    
+    Target Buyer Profile:
+    {buyer_profile}
+    
+    Create a personalized sales pitch that highlights:
+    1. Key selling points
+    2. Investment potential
+    3. Unique features
+    4. Competitive advantages
