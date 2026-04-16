@@ -1,4 +1,4 @@
-California-houses-agents/
+London-houses-agents/
 │
 │
 ├── data/                       # Dados e armazenamento
@@ -158,10 +158,11 @@ California-houses-agents/
 │   │   ├── market_analysis.md
 │   │   ├── investment_opportunities.md
 │   │   └── risk_assessment.md
-│   └── project_docs/           # Documentação do projeto
-│       ├── architecture.md
-│       ├── api_documentation.md
-│       └── deployment_guide.md
+├── docs/                       # Documentação do projeto
+│   └── architecture/          # Diagramas e especificações
+│       ├── architecture.txt
+│       ├── architecture.drawio
+│       └── architecture_agent.drawio
 │
 ├── tests/                      # Testes
 │   ├── __init__.py
@@ -201,8 +202,6 @@ California-houses-agents/
 │
 ├── .env.example                # Variáveis de ambiente exemplo
 ├── .gitignore
-├── requirements.txt            # Dependências principais
-├── requirements-dev.txt        # Dependências de desenvolvimento
 ├── pyproject.toml              # Configuração do projeto
 ├── setup.py                    # Instalação como pacote
 ├── Makefile                    # Comandos automatizados
