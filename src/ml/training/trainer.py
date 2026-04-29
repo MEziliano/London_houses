@@ -5,7 +5,10 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.neighbors import KNeighborsRegressor
 from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
 from src.data.data_processor import build_preprocessing_pipeline
 
 def train_and_save_model(data_path, model_type="xgboost"):
@@ -31,6 +34,21 @@ def train_and_save_model(data_path, model_type="xgboost"):
     elif model_type == "random_forest":
         print("Treinando RandomForest...")
         model = RandomForestRegressor(n_estimators=100, random_state=42)
+    elif model_type == "linear_regression":
+        print("Treinando Regressão Linear...")
+        model = LinearRegression()
+    elif model_type == "ridge":
+        print("Treinando Ridge Regression...")
+        model = Ridge(alpha=1.0)
+    elif model_type == "lasso":
+        print("Treinando Lasso Regression...")
+        model = Lasso(alpha=1.0)
+    elif model_type == "knn":
+        print("Treinando K-Nearest Neighbors...")
+        model = KNeighborsRegressor(n_neighbors=5)
+    elif model_type == "lightgbm":
+        print("Treinando LightGBM...")
+        model = LGBMRegressor(random_state=42)
     else:
         raise ValueError(f"Modelo {model_type} não suportado.")
         

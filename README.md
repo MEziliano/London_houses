@@ -128,6 +128,8 @@ London-houses-agents/
 │   │   ├── linear_regression.pkl
 │   │   ├── random_forest.pkl
 │   │   ├── xgboost.pkl
+│   │   ├── lightgbm.pkl
+│   │   ├── knn.pkl
 │   │   └── ensemble.pkl
 │   ├── model_artifacts/        # Artefatos dos modelos
 │   │   ├── feature_importance/
