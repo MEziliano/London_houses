@@ -1,1 +1,33 @@
+# Cache e compilação
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambiente Python
+.venv/
+venv/
+env/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Segredos e configuração local
+.env
+.gemini/
+.gemini
+.geminiignore
+.antigravity/
+
+# Logs e arquivos temporários
+*.log
+.DS_Store
 .pdf
+
+# MLflow
+**/mlruns/
+mlflow.db
+*.db
+
+# Models
+models/trained_models/*.pkl
