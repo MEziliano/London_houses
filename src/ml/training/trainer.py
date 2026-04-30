@@ -1,0 +1,84 @@
+import pandas as pd
+import numpy as np
+import os
+import joblib
+import mlflow
+import mlflow.sklearn
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.neighbors import KNeighborsRegressor
+from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
+from src.data.data_processor import build_preprocessing_pipeline
+
+def train_and_save_model(data_path, model_type="xgboost"):
+    """
+    Carrega dados, treina um modelo de regressão e salva o modelo e o preprocessor.
+    """
+    mlflow.set_experiment("London_Housing")
+    with mlflow.start_run(run_name=f"train_{model_type}"):
+        print(f"Lendo dados de {data_path}...")
+        df = pd.read_csv(data_path)
+        
+        X = df.drop("median_house_value", axis=1)
+        y = df["median_house_value"].copy()
+    
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        
+        print("Construindo pipeline de pré-processamento...")
+        preprocessor = build_preprocessing_pipeline()
+        X_train_prepared = preprocessor.fit_transform(X_train)
+        X_test_prepared = preprocessor.transform(X_test)
+        
+        if model_type == "xgboost":
+            print("Treinando XGBoost...")
+            model = XGBRegressor(n_estimators=100, learning_rate=0.1, random_state=42)
+        elif model_type == "random_forest":
+            print("Treinando RandomForest...")
+            model = RandomForestRegressor(n_estimators=100, random_state=42)
+        elif model_type == "linear_regression":
+            print("Treinando Regressão Linear...")
+            model = LinearRegression()
+        elif model_type == "ridge":
+            print("Treinando Ridge Regression...")
+            model = Ridge(alpha=1.0)
+        elif model_type == "lasso":
+            print("Treinando Lasso Regression...")
+            model = Lasso(alpha=1.0)
+        elif model_type == "knn":
+            print("Treinando K-Nearest Neighbors...")
+            model = KNeighborsRegressor(n_neighbors=5)
+        elif model_type == "lightgbm":
+            print("Treinando LightGBM...")
+            model = LGBMRegressor(random_state=42)
+        else:
+            raise ValueError(f"Modelo {model_type} não suportado.")
+            
+        model.fit(X_train_prepared, y_train)
+    
+        # Avaliação
+        predictions = model.predict(X_test_prepared)
+        rmse = np.sqrt(mean_squared_error(y_test, predictions))
+        r2 = r2_score(y_test, predictions)
+        
+        mlflow.log_param("model_type", model_type)
+        mlflow.log_metric("rmse", rmse)
+        mlflow.log_metric("r2_score", r2)
+        mlflow.sklearn.log_model(model, "model")
+        
+        print(f"Modelo {model_type} treinado com sucesso!")
+        print(f"RMSE: {rmse:,.2f}")
+        print(f"R2 Score: {r2:.4f}")
+    
+        # Salvar localmente também
+        os.makedirs('models/trained_models', exist_ok=True)
+        joblib.dump(model, f'models/trained_models/{model_type}_model.pkl')
+        joblib.dump(preprocessor, 'models/trained_models/preprocessor.pkl')
+        print("Artefatos salvos em models/trained_models/")
+        
+        return model, preprocessor
+
+if __name__ == "__main__":
+    train_and_save_model("data/housing.csv", model_type="xgboost")

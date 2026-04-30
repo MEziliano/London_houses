@@ -1,4 +1,10 @@
-California-houses-agents/
+# London Houses - Regression Analysis With Sells Agent
+
+<details>
+  <summary> File tree</summary>
+
+```
+London-houses-agents/
 │
 │
 ├── data/                       # Dados e armazenamento
@@ -128,6 +134,8 @@ California-houses-agents/
 │   │   ├── linear_regression.pkl
 │   │   ├── random_forest.pkl
 │   │   ├── xgboost.pkl
+│   │   ├── lightgbm.pkl
+│   │   ├── knn.pkl
 │   │   └── ensemble.pkl
 │   ├── model_artifacts/        # Artefatos dos modelos
 │   │   ├── feature_importance/
@@ -158,10 +166,11 @@ California-houses-agents/
 │   │   ├── market_analysis.md
 │   │   ├── investment_opportunities.md
 │   │   └── risk_assessment.md
-│   └── project_docs/           # Documentação do projeto
-│       ├── architecture.md
-│       ├── api_documentation.md
-│       └── deployment_guide.md
+├── docs/                       # Documentação do projeto
+│   └── architecture/          # Diagramas e especificações
+│       ├── architecture.txt
+│       ├── architecture.drawio
+│       └── architecture_agent.drawio
 │
 ├── tests/                      # Testes
 │   ├── __init__.py
@@ -201,11 +210,12 @@ California-houses-agents/
 │
 ├── .env.example                # Variáveis de ambiente exemplo
 ├── .gitignore
-├── requirements.txt            # Dependências principais
-├── requirements-dev.txt        # Dependências de desenvolvimento
 ├── pyproject.toml              # Configuração do projeto
 ├── setup.py                    # Instalação como pacote
 ├── Makefile                    # Comandos automatizados
 ├── README.md                   # Documentação principal
 ├── CONTRIBUTING.md
 └── LICENSE
+´´´
+
+</details>
