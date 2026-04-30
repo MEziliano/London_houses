@@ -15,6 +15,7 @@ env/
 # Segredos e configuração local
 .env
 .gemini/
+.gemini
 .geminiignore
 .antigravity/
 
@@ -23,3 +24,10 @@ env/
 .DS_Store
 .pdf
 
+# MLflow
+**/mlruns/
+mlflow.db
+*.db
+
+# Models
+models/trained_models/*.pkl

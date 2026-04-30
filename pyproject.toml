@@ -11,6 +11,7 @@ dependencies = [
     "langchain>=0.3.0",
     "lightgbm>=4.6.0",
     "matplotlib>=3.10.8",
+    "mlflow>=3.11.1",
     "numpy>=2.0",
     "openai>=2.32.0",
     "pandas>=2.3.3",
